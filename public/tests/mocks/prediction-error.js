@@ -1,0 +1,1 @@
+var predictionError = {"copyright":"All data copyright agencies listed below and NextBus Inc 2012.","Error":{"content":"agency parameter \"a\" must be specified in query string","shouldRetry":"false"}}
