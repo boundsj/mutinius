@@ -2,9 +2,11 @@ if (Meteor.isClient) {
 
   BuberRouter = ReactiveRouter.extend({
     routes: {
+      'livetest': 'livetest',
       'checkin': 'checkin',
       '': 'landing'
     },
+    livetest: function() { this.goto('livetest'); },
     checkin: function() { this.goto('checkin'); },
     landing: function() { this.goto('landing'); }
   });
@@ -14,7 +16,38 @@ if (Meteor.isClient) {
     Backbone.history.start({pushState: true});
   });
 
-  Template.checkin.username = function() { return 'user'; }
+  // livetest template
+  Template.livetest.created = function() {
+
+    Session.set("refreshTime", 0);
+
+    // TODO: Handoff from Mick's code starts here
+    //       Should get a bus stop and array of route tags that are coordinated
+    //       with user's actual location
+    var refresh = function() {
+      var refreshTime = Session.get("refreshTime");
+      if (refreshTime === 0) {
+        console.log("refreshing");
+        Meteor.call('getPredictions', 13114, function(err, res) {
+          Session.set("routes", res);
+        });
+        refreshTime = 30;
+        Session.set("refreshTime", refreshTime);
+      } else {
+        Session.set("refreshTime", --refreshTime);
+      }
+      Meteor.setTimeout(refresh, 1000);
+    }
+    refresh();
+  }
+  Template.livetest.routes = function() {
+    return Session.get("routes");
+  }
+  Template.livetest.refreshTime = function() {
+    return Session.get("refreshTime");
+  }
+  Template.livetest.events = {}
+
   Template.checkin.events = {
     'click input': function() {
       Meteor.call('getPredictions', 5542, [14], function(err, res) {
