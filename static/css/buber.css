@@ -116,20 +116,25 @@ div.busicon{
 .routelist li .direction{ 
   font-weight:bold;
   float:left;
-  margin:4px 0px 0px 10px;
-  width:200px;
+  margin:4px 0px 0px 5px;
+  width:125px;
+  font-size:14px;
+  overflow:none;
 }
 .routelist li .stop{
   float:left;
-  margin-left:10px;
-  font-size:16px;
+  margin-left:5px;
+  font-size:14px;
 } 
 .routelist li .leftcell{
-
+  float:left;
+  width:185px;
+  overflow:none;
 }
 .routelist li .rightcell{ 
   float:right;
-  width:80px;
+  width:75px;
+
 }
 .routelist li .time{ 
   float:left;
@@ -138,10 +143,58 @@ div.busicon{
 }
 .routelist li .othertimes{
   float:left;
-  margin:5px 0px 0px 10px;
+  margin:5px 0px 0px 5px;
   width:45px;
 }
 .routelist li .timelabel{
   float:left;
-  margin-left:10px;
+  margin-left:5px;
 } 
+
+.checkin{ 
+  background: rgba(140, 104, 163, 0.9);
+  z-index: 1000;
+  position:absolute;
+  top:0px; bottom:0px; right:0px; left:0px;
+  color:#fff;
+}
+.checkin h3{ 
+  font-size:18px;
+}
+
+.checkin .stops{ 
+  position:absolute;
+  top:110px;
+  bottom:80px;
+  left:15px;
+  right:15px;
+  background:#fff;
+}
+.checkin .nextstops li{ 
+  
+}
+
+.checkinbtn{ 
+  text-transform:uppercase;
+  padding:9px;
+  font-size:14px;
+  font-weight:bold;
+  color:#fff;
+  background:#f37437;
+  width:200px;
+  text-align:center;
+  margin:auto;
+  -webkit-box-shadow: inset 3px -3px 3px #fff;  
+  border-radius:5px;
+}
+.checkincontrols{ 
+  position:absolute;
+  bottom:30px;
+  left:0px;
+  right:0px;
+}
+
+.stops{ 
+  
+
+}
