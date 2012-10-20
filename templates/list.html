@@ -3,7 +3,7 @@
 
 
   <ul class="routelist">
-    {{#each stop.routes}}
+    {{#each routes}}
        {{> route}}
     {{/each}}
 
@@ -18,16 +18,14 @@
 <template name="route">
   <li>
     <div class="rightcell">
-      <div class="time">4</div>
-      <div class="othertimes">10, 20</div>
+      <div class="time">{{minute1}}</div>
+      <div class="othertimes">{{minute2}}, {{minute3}}</div>
       <div class="timelabel">mins.</div>
     </div>
-
     <div class="leftcell">
-      <div class="tag">{{ this }}</div>
-      <div class="direction">Downtown</div>
-      <div class="stop">market and franklin</div>
+      <div class="tag">{{routeTag}}</div>
+      <div class="direction">{{title}}</div>
+      <div class="stop">{{stopTitle}}</div>
     </div>
-      
-    </li>
+  </li>
 </template>

@@ -109,14 +109,14 @@ div.busicon{
 }
 .routelist li .tag{ 
   float:left;
-  font-size:42px;
+  font-size:32px;
   font-weight:bold;
 }
 
 .routelist li .direction{ 
   font-weight:bold;
   float:left;
-  margin:4px 0px 0px 5px;
+  margin:3px 0px 0px 5px;
   width:125px;
   font-size:14px;
   overflow:none;
@@ -124,31 +124,36 @@ div.busicon{
 .routelist li .stop{
   float:left;
   margin-left:5px;
+  width:125px;
   font-size:14px;
+  overflow:none;
+
 } 
 .routelist li .leftcell{
   float:left;
-  width:185px;
+  width:170px;
   overflow:none;
 }
 .routelist li .rightcell{ 
   float:right;
-  width:75px;
+  width:90px;
 
 }
 .routelist li .time{ 
   float:left;
-  font-size:42px;
+  font-size:32px;
   font-weight:bold;
 }
 .routelist li .othertimes{
   float:left;
-  margin:5px 0px 0px 5px;
+  margin:3px 0px 0px 5px;
   width:45px;
+  font-size:14px;
 }
 .routelist li .timelabel{
   float:left;
   margin-left:5px;
+  font-size:14px;
 } 
 
 .checkin{ 

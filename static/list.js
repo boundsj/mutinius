@@ -20,7 +20,7 @@ if(Meteor.isClient){
 
     },
     lookupStop:function(coords){
-      
+
       var current = new google.maps.LatLng(coords[1], coords[0]);
       var inbounds = [];
 
@@ -37,8 +37,45 @@ if(Meteor.isClient){
         }
       }
       return closest;
-    } 
- 
+    }
+
+  }
+
+  Template.list.created = function() {
+
+    Session.set("refreshTime", 0);
+
+    var refresh = function() {
+
+      var stop = Session.get("stop");
+
+      if (!stop || !stop.id) {
+        console.log("no stop, retry");
+        Meteor.setTimeout(refresh, 500);
+        return;
+      }
+
+      var refreshTime = Session.get("refreshTime");
+      if (refreshTime === 0) {
+        console.log("refreshing");
+        Meteor.call('getPredictions', "1" + stop.id, function(err, res) {
+          console.log(res);
+          Session.set("routes", res);
+        });
+        refreshTime = 30;
+        Session.set("refreshTime", refreshTime);
+      } else {
+        Session.set("refreshTime", --refreshTime);
+      }
+      Meteor.setTimeout(refresh, 1000);
+    }
+    refresh();
+  }
+  Template.list.routes = function() {
+    return Session.get("routes");
+  }
+  Template.list.refreshTime = function() {
+    return Session.get("refreshTime");
   }
 
   Template.list.stop = function () {

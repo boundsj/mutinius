@@ -1,0 +1,14 @@
+<template name="livetest">
+  <h3>next vehicles/routes:</h3>
+  <hr />
+  {{#each routes}}
+    <div>{{routeTag}} : {{stopTitle}} : {{title}} : {{predictionsAvailable}} </div>
+    {{#each minutes}}
+      {{value}}
+    {{/each}}
+    <hr />
+  {{/each}}
+  <hr />
+  <h5>refreshing in {{refreshTime}}</h5>
+</template>
+
