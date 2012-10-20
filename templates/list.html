@@ -1,0 +1,31 @@
+<template name="list">
+  <h1 class="stoplocation">{{stop.name}}</h1>
+
+
+  <ul class="routelist">
+    {{#each routes}}
+       {{> route}}
+    {{/each}}
+
+  </ul>
+  
+</template>
+
+
+<template name="scores">
+</template>
+
+<template name="route">
+      <li>
+      <div class="rightcell">
+        <div class="time">{{minute1}}</div>
+        <div class="othertimes">{{minute2}}, {{minute3}}</div>
+        <div class="timelabel">mins.</div>
+      </div>
+      <div class="leftcell">
+        <div class="tag">{{routeTag}}</div>
+        <div class="direction">{{title}}</div>
+        <div class="stop">{{stopTitle}}</div>
+      </div>
+    </li>
+</template>

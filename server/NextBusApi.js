@@ -14,10 +14,6 @@ var NextBusApi = {
     var predictions = [];
     var rawCollection = this.callPredictionServer(stopId);
 
-    console.log("rawCollection:");
-    console.log(rawCollection);
-
-
     // XXX: Should check to see if we were rate limited
     if (!rawCollection.predictions) {
       return predictions;
@@ -27,9 +23,6 @@ var NextBusApi = {
 
       var raw = rawCollection.predictions[i];
       var prediction = {};
-
-      console.log("raw:");
-      console.log(raw);
 
       if (!raw.routeTag) {
         prediction.routeTag = "";
@@ -41,8 +34,6 @@ var NextBusApi = {
         prediction.predictionsAvailable = false;
         predictions.push(prediction);
         continue;
-      } else {
-        prediction.title = raw.direction.title;
       }
       if (!raw.stopTitle) {
         prediction.stopTitle = "";
@@ -58,8 +49,10 @@ var NextBusApi = {
       var predictionArray;
       if (raw.direction.length) {
         predictionArray = raw.direction[0].prediction;
+        prediction.title = raw.direction[0].title.substring(0, 8);
       } else {
         predictionArray = raw.direction.prediction;
+        prediction.title = raw.direction.title.substring(0, 8);
       }
 
       var minutes = [];
@@ -68,6 +61,9 @@ var NextBusApi = {
         minutes.push({value: predictionArray[j].minutes});
       }
       prediction.minutes = minutes;
+      if (minutes.length >= 1) {prediction.minute1 = minutes[0].value;}
+      if (minutes.length >= 2) {prediction.minute2 = minutes[1].value;}
+      if (minutes.length >= 3) {prediction.minute3 = minutes[2].value;}
       prediction.predictionsAvailable = true;
 
       predictions.push(prediction);

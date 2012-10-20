@@ -4,11 +4,13 @@ if (Meteor.isClient) {
     routes: {
       'livetest': 'livetest',
       'checkin': 'checkin',
-      '': 'landing'
+      'map': 'map',
+      '': 'list'
     },
     livetest: function() { this.goto('livetest'); },
+    map: function() { this.goto('map'); },
     checkin: function() { this.goto('checkin'); },
-    landing: function() { this.goto('landing'); }
+    list: function() { this.goto('list'); }
   });
 
   Router = new BuberRouter();
@@ -58,6 +60,7 @@ if (Meteor.isClient) {
       });
     }
   }
+
 }
 
 if (Meteor.isServer) {
