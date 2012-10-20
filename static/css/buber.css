@@ -1,3 +1,147 @@
 /* CSS declarations go here */
+body{ 
+  background:#e3e3e3;
+  font-family:arial;
+  color:#4f4f4f;
+}
+
+.header{ 
+  height:48px;
+  border-bottom:solid 1px #c9c9c9;
+  overflow:none;
+  background:#fff;
+}
+div.busicon{ 
+  height:48px;
+  width:48px;
+  float:left;
+  background:url('/img/bus_icon.png');
+}
+
+.header ul.navigation li{ 
+  height:48px;
+  width:58px;
+  border-left:solid 2px #e4e4e4;
+  float:right;
+}
+.header ul.navigation li.selected{
+  background:#f37437;
+  -webkit-box-shadow: inset 0 0 8px #666;
+} 
+
+.content{ 
+  margin:8px 6px;
+  border: solid 2px #c9c9c9;
+  padding:12px 8px;
+  min-height:300px;
+  background:#fff;
+  position:absolute;
+  bottom:0px;
+  top:48px;
+  left:0px;
+  right:0px;
+}
 
 
+.routeinfo .tag{ 
+  text-align:center;
+  font-size:42px;
+  font-weight:bold;
+  color:
+}
+.routeinfo .direction{
+  text-align:center;
+  font-weight:bold;
+  margin-bottom:2px;
+} 
+.routeinfo .stop{ 
+  text-align:center;
+  margin-bottom:9px;
+}
+.routeinfo .description{ 
+  text-align:center;
+  font-size:12px;
+  font-style:italic;
+}
+.routeinfo .upcomingtimes{ 
+  text-align:center;
+  background:#49c9c3;
+  padding:5px;
+  border-radius:3px;
+  color:#fff;
+  margin:10px 0px 5px;
+  -webkit-box-shadow: inset 0 0 8px #666;
+}
+.routeinfo .upcomingtimes span{ 
+  font-size:36px;
+}
+.mapbox{ 
+  border:solid 2px #c9c9c9;
+  position:absolute;
+  bottom:10px;
+  left:8px;
+  right:8px;
+  padding:5px;
+  top:175px;  
+}
+
+#map{ 
+  position:absolute;
+  top:5px;
+  right:5px;
+  left:5px;
+  bottom:5px;
+}
+
+.stoplocation{ 
+  font-size:32px;
+  text-align:center;
+  margin:5px 0px;
+}
+
+.routelist li{ 
+  border:solid 1px #c3c3c3;
+  height:40px;
+  padding:12px 12px;
+  border-radius:3px;
+  margin-top:5px;
+  -webkit-box-shadow: 3px 3px 7px #999;  
+}
+.routelist li .tag{ 
+  float:left;
+  font-size:42px;
+  font-weight:bold;
+}
+
+.routelist li .direction{ 
+  font-weight:bold;
+  float:left;
+  margin:4px 0px 0px 10px;
+  width:200px;
+}
+.routelist li .stop{
+  float:left;
+  margin-left:10px;
+  font-size:16px;
+} 
+.routelist li .leftcell{
+
+}
+.routelist li .rightcell{ 
+  float:right;
+  width:80px;
+}
+.routelist li .time{ 
+  float:left;
+  font-size:42px;
+  font-weight:bold;
+}
+.routelist li .othertimes{
+  float:left;
+  margin:5px 0px 0px 10px;
+  width:45px;
+}
+.routelist li .timelabel{
+  float:left;
+  margin-left:10px;
+} 

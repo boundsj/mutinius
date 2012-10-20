@@ -1,9 +1,20 @@
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>buber</title>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=true"></script>
+  
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=geometry,places&sensor=true"></script>
 </head>
 
 <body>
-  {{{render currentPage}}}
+  {{> header}}
+  <div class="content">
+    {{{render currentPage}}}
+  </div>
 </body>
 
 
