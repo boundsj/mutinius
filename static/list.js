@@ -1,21 +1,8 @@
 if(Meteor.isClient){
 
-
-
-  if(!Session.get("shownPopup")){
-    
-    if(!window.navigator.standalone){
-      Session.set("shownPopup", true);
-      $(".addtohomepage").show();
-      Meteor.setTimeout(function(){
-        $(".addtohomepage").hide();
-      }, 5000);
-      
-    }
-    
-  }
-
-
+  
+  
+  
 
   
   var muniList = {
@@ -41,7 +28,22 @@ if(Meteor.isClient){
         muniList.routeDetails(route, Session.get("stop").id);
         $(".startcheckin").show();
       });
-     
+
+      if(Session.get("shownPopup") === undefined){
+
+        if(!window.navigator.standalone){
+          
+          Session.set("shownPopup", true);
+          $(".addtohomepage").show();
+          Meteor.setTimeout(function(){
+            $(".addtohomepage").hide();
+          }, 7000);
+          
+        }
+        
+      }
+
+   
 
       setSelected("list");
     },
