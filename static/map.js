@@ -106,7 +106,7 @@ if(Meteor.isClient) {
     _.forEach(route.minutes, function(r){
       times.push(r.value);
     });
-     console.log("R", route.minutes);
+ 
     return times.join(", ");
   };
 

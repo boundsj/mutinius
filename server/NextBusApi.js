@@ -80,8 +80,8 @@ var NextBusApi = {
       prediction.minutes = minutes;
       prediction.vehicle = predictionArray[0].vehicle;
       if (minutes.length >= 1) {prediction.minute1 = minutes[0].value;}
-      if (minutes.length >= 2) {prediction.minute2 = minutes[1].value;}
-      if (minutes.length >= 3) {prediction.minute3 = minutes[2].value;}
+      if (minutes.length >= 2) {prediction.othermins = [minutes[1].value];}
+      if (minutes.length >= 3) {prediction.othermins.push( minutes[2].value);}
       prediction.predictionsAvailable = true;
 
       predictions.push(prediction);
