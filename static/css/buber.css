@@ -307,7 +307,7 @@ div.busicon{
 .feedbacklist{ 
   position:absolute;
   top:120px;
-  
+  bottom:80px;
   left:15px;
   right:15px;
   background:#fff;
