@@ -396,3 +396,27 @@ div.busicon{
   color: #333;
 }
 
+.addtohomepage{
+  z-index:1000;
+  width:210px;
+  height:106px;
+  position:absolute;
+  bottom:0px;
+  left:108px;
+  background:url("/img/buber_pop_up.png");
+  background-repeat:no-repeat;
+}
+
+.addtohomepage .busimage{
+  margin: 20px 10px 0 18px;
+  width:49px;
+  height:49px;
+  background:url("/img/buber_bus_pop_up.png");
+  background-repeat:no-repeat;
+  float:left;
+}
+
+.addtohomepage .instructions{
+  margin:14px;
+  font-size:80%;
+}
