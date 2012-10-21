@@ -280,3 +280,19 @@ div.busicon{
   
 
 }
+
+.accounts-dialog {
+  border: 1px solid #777777;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: -8px 48px 0 -12px;
+  width: 198px;
+  height: 280px;
+  font-size: 16px;
+  color: #333;
+}
+
