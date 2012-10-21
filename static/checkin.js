@@ -16,22 +16,35 @@ if(Meteor.isClient){
         $(".checkin").hide();
       });
       $(".checkin .checkinbtn").on("click", function(ev){
-        //This is your checkin data, Jesse.
-        var checkinData = {distination: Session.get("dist"),
-                           stop: Session.get("stop").id,
-                           location:Session.get("location"),
-                           route:Session.get("route"),
-                           vehicle:Session.get("vehicle")};
-        console.log("Checkin data", checkinData);
+
+        var userId = checkAndReturnUserLogin();
+
+        if (userId) {
+          var checkinData = {distination: Session.get("dist"),
+                             stop: Session.get("stop").id,
+                             location:Session.get("location"),
+                             route:Session.get("route"),
+                             vehicle:Session.get("vehicle"),
+                             userId:userId};
+          console.log("Checkin data", checkinData);
+          var checkinId = Checkins.insert(checkinData);
+          console.log(checkinId);
+          Session.set("checkinId", checkinId);
+
+          $(".checkin").hide();
+          $(".startcheckin").hide();
+          $(".startfeedback").show();
+          return;
+        }
 
         $(".checkin").hide();
-        $(".startcheckin").hide();
-        $(".startfeedback").show();
+        //$(".startcheckin").hide();
+        //$(".startfeedback").show();
       });
 
 
     },
- 
+
   }
 
   Template.checkin.stop = function () {
