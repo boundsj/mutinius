@@ -25,7 +25,6 @@ if(Meteor.isClient){
 
   Template.checkin.routeDetail = function(){
     var rd = Session.get("routeDetail");
-    console.log("in routedetail:", rd);
     return rd;
   };
 
