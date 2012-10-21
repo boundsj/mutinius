@@ -60,6 +60,7 @@ if(Meteor.isClient){
         console.log("refreshing");
         Meteor.call('getPredictions', "1" + stop.id, function(err, res) {
           console.log(res);
+          res = _.sortBy(res, function(r){ r.predictionsAvailable ? r.minute1 : 1000 });
           Session.set("routes", res);
         });
         refreshTime = 30;

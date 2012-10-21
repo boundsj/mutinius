@@ -144,6 +144,9 @@ div.busicon{
   font-size:32px;
   font-weight:bold;
 }
+.routelist li .time.small{ 
+  font-size:20px;
+}
 .routelist li .othertimes{
   float:left;
   margin:3px 0px 0px 5px;
@@ -165,23 +168,61 @@ div.busicon{
 }
 .checkin h3{ 
   font-size:18px;
+  text-align:center;
+  background:#444444;
+  height:20px;
+  padding:10px 0px;
+  position:absolute;
+  left:15px; right:15px;
+  z-index:1001;
+  -webkit-box-shadow: -3px 3px 8px rgba(0,0,0,0.3);
 }
 
 .checkin .stops{ 
   position:absolute;
-  top:110px;
+  top:120px;
   bottom:80px;
   left:15px;
   right:15px;
   background:#fff;
+  overflow:auto;
 }
 .checkin .nextstops li{ 
-  
+  height:14px;
+  border-bottom:solid 1px #333;
+  color:#4f4f4f;
+  padding:14px 10px;
 }
+.checkin .nextstops li.selected{
+  background: #1cbbb4;
+  color: #fff;
+} 
 
+.checkin .nextstops li .name{ 
+  float:left;
+  font-size:16px;
+  margin-top:2px;
+}
+.checkin .nextstops li .time{
+  float:right;
+  font-size:20px;
+  font-weight:bold;
+}
+.checkin .nextstops li .time span{
+  font-style:italic;
+  font-size:14px;
+  font-weight:normal;
+}
+.checkin .checkinIcon{ 
+  background:url("/img/buber_check_in_text.png") no-repeat;
+  width:138px;
+  height:66px;
+  margin:10px auto 5px;
+
+}
 .checkinbtn{ 
   text-transform:uppercase;
-  padding:9px;
+  padding:12px 9px;
   font-size:14px;
   font-weight:bold;
   color:#fff;
@@ -189,7 +230,7 @@ div.busicon{
   width:200px;
   text-align:center;
   margin:auto;
-  -webkit-box-shadow: inset 3px -3px 3px #fff;  
+  -webkit-box-shadow:  -3px 3px 8px rgba(0,0,0,0.3);
   border-radius:5px;
 }
 .checkincontrols{ 
