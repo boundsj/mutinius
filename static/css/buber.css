@@ -183,7 +183,7 @@ div.busicon{
   height:49px;
   position:absolute;
   bottom:0px;
-  left:98px;
+  left:90px;
 }
 .startfeedback{ 
   background:url("/img/buber_treasures_button.png");
@@ -191,7 +191,7 @@ div.busicon{
   height:49px;
   position:absolute;
   bottom:0px;
-  left:98px;
+  left:90px;
   display:none;
 }
 
@@ -512,3 +512,18 @@ div.busicon{
   margin:14px;
   font-size:80%;
 }
+
+/*@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  div.busicon{ 
+    background: url('/img/bus_icon@2x.png');
+  }  
+  .header ul.navigation li{ 
+    background:url("/img/buber_nav_sprite@2x.png") no-repeat top left;
+  }
+  .routeinfo .back{ 
+    background:url("/img/buber_hand@2x.png");
+  }
+  .startcheckin{ 
+    background:url("/img/buber_check_in_button@2x.png");
+  }
+}*/
