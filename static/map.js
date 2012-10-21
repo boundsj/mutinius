@@ -1,4 +1,36 @@
-if(Meteor.isClient){
+if(Meteor.isClient) {
+
+
+  Template.map.created = function() {
+
+      var vecMarker = null;
+
+      Session.set("vehicle", 5481);
+
+      function watchVehicle() {
+        var vehicle = Vehicles.findOne();
+        console.log(vehicle);
+
+        if (!vehicle) {
+          Meteor.setTimeout(watchVehicle, 5000);
+          return;
+        }
+
+        if (vecMarker === null) {
+          vecMarker = new google.maps.Marker( {
+            map: muniMap.map,
+            position: new google.maps.LatLng(vehicle.lat, vehicle.lon),
+            title: "Vehicle"
+          });
+        } else {
+          vecMarker.position = new google.maps.LatLng(vehicle.lat, vehicle.lon);
+        }
+
+        Meteor.setTimeout(watchVehicle, 5000);
+      }
+      watchVehicle();
+
+  }
 
   var muniMap = {
 
@@ -26,7 +58,7 @@ if(Meteor.isClient){
           console.log("error", e);
         }, {enableHighAccuracy:true, maximumAge:30000, timeout:27000});
       }
-    }  
+    }
 
 
 
