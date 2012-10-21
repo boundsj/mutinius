@@ -1,5 +1,6 @@
 <template name="map">
   <div class="routeinfo">
+    <div class="back"></div>
     <div class="tag">{{ route }}</div>
     <div class="direction">{{ routeDetail.direction1.title }}</div>
     <div class="stop">{{ stop.name }}</div>
@@ -7,8 +8,10 @@
     
     <div class="upcomingtimes"><span>{{ times }}</span> minutes</div>
   </div>
+  {{#constant}}
   <div class="mapbox">
     <div id="map"></div>
   </div>
+  {{/constant}}
 
 </template>

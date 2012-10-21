@@ -34,7 +34,11 @@ if(Meteor.isClient) {
   var muniMap = {
     firstRun:true,
     init:function(){
+      //console.log($("#map").html()!=="")
+      if($("#map").html()!=="")
+        return;
 
+      
       console.log("INIT!");
       var location = new google.maps.LatLng(37.765, -122.443);
       console.log("sess loc", Session.get("location"))
@@ -55,7 +59,6 @@ if(Meteor.isClient) {
         title: "You",
         map:muniMap.map
       }); 
-
 
       muniMap.firstRun = false;
     },
@@ -97,10 +100,15 @@ if(Meteor.isClient) {
       return "";
     _.forEach(route.minutes, function(r){
       times.push(r.value);
-    })
+    });
      console.log("R", route.minutes);
     return times.join(", ");
   };
+
+  Template.map.events({"click .routeinfo .back":function(){
+    Router.navigate("/", {trigger: true});
+  }});
+
 
   Template.map.rendered = muniMap.init;
   Template.map.created = watchVehicle;
