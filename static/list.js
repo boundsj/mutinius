@@ -40,8 +40,10 @@ if(Meteor.isClient){
           }, 7000);
           
         }
-        
       }
+      $(".addtohomepage").on("click", function(){
+        $(".addtohomepage").hide();
+      });
 
    
 
