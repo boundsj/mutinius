@@ -9,12 +9,11 @@ if(Meteor.isClient) {
       //Session.set("vehicle", 5481);
 
       function watchVehicle() {
-        console.log(userMarker);
         var vehicle = Vehicles.findOne();
-        console.log(vehicle);
 
-        if (!vehicle) {
+        if (!vehicle || !userMarker) {
           Meteor.setTimeout(watchVehicle, 5000);
+          console.log("vehicle and/or userMarker are null");
           return;
         }
 
@@ -58,6 +57,7 @@ if(Meteor.isClient) {
       });
 
       if(navigator.geolocation) {
+
         var wpid = navigator.geolocation.watchPosition(function(position) {
           var browserLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
           muniMap.map.panTo(browserLoc);

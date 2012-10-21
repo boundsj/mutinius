@@ -7,7 +7,7 @@ if(Meteor.isClient){
       if(navigator.geolocation) {
         var wpid = navigator.geolocation.watchPosition(function(position) {
           var browserLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-          var stop = muniList.lookupStop([position.coords.longitude, position.coords.latitude])
+          var stop = muniList.lookupStop([position.coords.longitude, position.coords.latitude]);
           console.log("stop", stop);
           Session.set("stop", stop);
         }, function(e){
@@ -23,7 +23,7 @@ if(Meteor.isClient){
         Session.set("route", route);
         Session.set("vehicle", vehicle);
         Router.navigate("/map", {trigger: true});
-        
+
         muniList.routeDetails(route, Session.get("stop").id);
       });
 

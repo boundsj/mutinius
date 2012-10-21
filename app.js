@@ -45,11 +45,16 @@ if (Meteor.isServer) {
         return;
       }
 
-      Vehicles.remove({});
+      //Vehicles.remove({});
 
       console.log("loading vehicles");
       for (var i=0; i<vehiclesList.length; i++) {
-        Vehicles.insert(vehiclesList[i]);
+        var vehicle = vehiclesList[i];
+        if (Vehicles.findOne({id: vehicle.id})) {
+          Vehicles.update({id: vehicle.id}, vehicle);
+        } else {
+          Vehicles.insert(vehiclesList[i]);
+        }
       }
       console.log("vehicles:" + Vehicles.find({}).count());
       Meteor.setTimeout(pollVehicleLocations, 10000);
