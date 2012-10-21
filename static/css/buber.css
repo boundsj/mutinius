@@ -112,9 +112,9 @@ div.busicon{
 }
 
 .stoplocation{ 
-  font-size:32px;
+  font-size:25px;
   text-align:center;
-  margin:5px 0px;
+  margin:5px 0px 10px;
 }
 
 .routelist li{ 
@@ -155,7 +155,6 @@ div.busicon{
 .routelist li .rightcell{ 
   float:right;
   width:90px;
-
 }
 .routelist li .time{ 
   float:left;
