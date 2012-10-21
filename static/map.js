@@ -41,6 +41,17 @@ if(Meteor.isClient) {
         Router.navigate("/", {trigger: true});
       });
       $(".startcheckin").on("click", function(){
+
+        var rd = Session.get("routeDetail");
+        var color = rd.color.toString();
+        while(color.length < 6){
+          color = "0"+color;
+        }
+        var r = parseInt(color[0]+color[1], 16);
+        var g = parseInt(color[2]+color[3], 16);
+        var b = parseInt(color[4]+color[5], 16);
+        
+        $(".checkin").css("background", "rgba("+[r,g,b].join(",")+", 0.9)");
         $(".checkin").show();
       });
 
