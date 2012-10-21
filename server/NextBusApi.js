@@ -64,7 +64,12 @@ var NextBusApi = {
         }
         prediction.title = raw.direction[0].title.substring(0, 8);
       } else {
-        predictionArray = raw.direction.prediction;
+        if(raw.direction.prediction.length){
+          predictionArray = raw.direction.prediction;
+        }else{
+          predictionArray = [raw.direction.prediction];
+        }
+        predictionArray = [raw.direction.prediction];
         prediction.title = raw.direction.title.substring(0, 8);
       }
       var minutes = [];
