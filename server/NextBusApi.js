@@ -2,11 +2,20 @@ var baseUrl = 'http://webservices.nextbus.com';
 
 var NextBusApi = {
 
+  callVehicleLocationServer: function() {
+    var url = baseUrl + '/service/publicJSONFeed?command=vehicleLocations&a=sf-muni';
+    var result = Meteor.http.get(url);
+    return result.data;
+  },
+
   callPredictionServer: function(stopId) {
-    //var url = baseUrl + '/service/publicJSONFeed?command=predictions&a=sf-muni&' + 'r=' + tag + '&s=' + stop;
     var url = baseUrl + '/service/publicJSONFeed?command=predictions&a=sf-muni&' + '&stopId=' + stopId;
     var result = Meteor.http.get(url);
     return result.data;
+  },
+
+  getVehicleLocations: function() {
+    return this.callVehicleLocationServer().vehicle;
   },
 
   getPredictions: function(stopId) {
@@ -50,9 +59,11 @@ var NextBusApi = {
       if (raw.direction.length) {
         predictionArray = raw.direction[0].prediction;
         prediction.title = raw.direction[0].title.substring(0, 8);
+        prediction.vehicle = raw.direction[0].vehicle;
       } else {
         predictionArray = raw.direction.prediction;
         prediction.title = raw.direction.title.substring(0, 8);
+        prediction.vehicle = raw.direction.vehicle;
       }
 
       var minutes = [];

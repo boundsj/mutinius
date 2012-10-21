@@ -60,7 +60,13 @@ if(Meteor.isClient){
         console.log("refreshing");
         Meteor.call('getPredictions', "1" + stop.id, function(err, res) {
           console.log(res);
-          Session.set("routes", res);
+          if (res.length > 0) {
+            Session.set("routes", res);
+          } else {
+            // XXX:
+            console.log("no data returned from API for route predictions!");
+            // oops! no data from API
+          }
         });
         refreshTime = 30;
         Session.set("refreshTime", refreshTime);
