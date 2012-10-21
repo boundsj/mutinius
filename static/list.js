@@ -20,7 +20,7 @@ if(Meteor.isClient){
         Session.set("route", route);
         Session.set("vehicle", vehicle);
         Router.navigate("/map", {trigger: true});
-        
+
         muniList.routeDetails(route, Session.get("stop").id);
       });
 
