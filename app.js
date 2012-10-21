@@ -54,8 +54,11 @@ if (Meteor.isClient) {
   var checkAndReturnUserLogin = function() {
     console.log("user", Meteor.user());
     if (!Meteor.user()) {
-      alert('Hey good looking, you need to login to do this!');
-      return null;
+      // XXX: For demo only!! disabling the login req because meteor login sucks
+      //      ass on mobile.
+      //alert('Hey good looking, you need to login to do this!');
+      //return null;
+      return "DEMO_USER";
     }
     return Meteor.userId();
   }
