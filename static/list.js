@@ -116,10 +116,18 @@ if(Meteor.isClient){
   Template.list.refreshTime = function() {
     return Session.get("refreshTime");
   }
-
   Template.list.stop = function () {
     return Session.get("stop");
   };
+  Template.list.events = {
+    "click #secure-clicker": function() {
+      if (Meteor.userLoaded()) {
+        console.log("clicked!");
+      } else {
+        console.log("oops, can't do it!");
+      }
+    }
+  }
   Template.list.rendered = muniList.afterRender;
   $(muniList.init);
 
