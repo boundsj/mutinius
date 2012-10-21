@@ -19,7 +19,8 @@ if(Meteor.isClient) {
         title: "Vehicle"
       });
     } else {
-      //vecMarker.setMap(muniMap.map);
+      // without this, marker does not get re-drawn on map
+      vecMarker.setMap(muniMap.map);
       vecMarker.position = new google.maps.LatLng(vehicle.lat, vehicle.lon);
     }
 
@@ -112,7 +113,7 @@ if(Meteor.isClient) {
     _.forEach(route.minutes, function(r){
       times.push(r.value);
     });
- 
+
     return times.join(", ");
   };
 

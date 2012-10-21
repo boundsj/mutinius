@@ -23,9 +23,14 @@ var NextBusApi = {
     var predictions = [];
     var rawCollection = this.callPredictionServer(stopId);
 
+
     // XXX: Should check to see if we were rate limited
     if (!rawCollection.predictions) {
       return predictions;
+    }
+
+    if (!rawCollection.predictions.length) {
+      rawCollection.predictions = [rawCollection.predictions];
     }
 
     for (var i=0; i<rawCollection.predictions.length; i++) {

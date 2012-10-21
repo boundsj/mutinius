@@ -32,7 +32,7 @@ if(Meteor.isClient){
         data.route.direction1 = data.route.direction[0];
 
         _.forEach(data.route.direction1.stop, function(stop){
-          var foundstop = _.find(muniList.stops, function(s){ 
+          var foundstop = _.find(muniList.stops, function(s){
             return (s.id+"" == stop.tag+"");
           });
           stop.name = foundstop.name;
@@ -78,6 +78,7 @@ if(Meteor.isClient){
         Meteor.setTimeout(refresh, 500);
         return;
       }
+      //console.log("stop: ", stop);
 
       var refreshTime = Session.get("refreshTime");
       if (refreshTime === 0) {
@@ -92,7 +93,7 @@ if(Meteor.isClient){
             // oops! no data from API
           }
           // XXX: this should be moved into if statement above!
-          
+
           _.forEach(res, function(r){
             if(r.predictionsAvailable)
               r.otherminsstr = r.othermins.join(", ");
