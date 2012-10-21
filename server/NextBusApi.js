@@ -59,19 +59,17 @@ var NextBusApi = {
       if (raw.direction.length) {
         predictionArray = raw.direction[0].prediction;
         prediction.title = raw.direction[0].title.substring(0, 8);
-        prediction.vehicle = raw.direction[0].vehicle;
       } else {
         predictionArray = raw.direction.prediction;
         prediction.title = raw.direction.title.substring(0, 8);
-        prediction.vehicle = raw.direction.vehicle;
       }
-
       var minutes = [];
       var maxPredictions = Math.min(3, predictionArray.length);
       for (var j=0; j<maxPredictions; j++) {
         minutes.push({value: predictionArray[j].minutes});
       }
       prediction.minutes = minutes;
+      prediction.vehicle = predictionArray[0].vehicle;
       if (minutes.length >= 1) {prediction.minute1 = minutes[0].value;}
       if (minutes.length >= 2) {prediction.minute2 = minutes[1].value;}
       if (minutes.length >= 3) {prediction.minute3 = minutes[2].value;}
