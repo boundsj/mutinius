@@ -58,6 +58,14 @@ if(Meteor.isClient){
       if (refreshTime === 0) {
         console.log("refreshing");
         Meteor.call('getPredictions', "1" + stop.id, function(err, res) {
+          console.log(res);
+          if (res.length > 0) {
+            Session.set("routes", res);
+          } else {
+            // XXX:
+            console.log("no data returned from API for route predictions!");
+            // oops! no data from API
+          }
           res = _.sortBy(res, function(r){ return r.predictionsAvailable ? parseInt(r.minute1) : 1000 });
           Session.set("routes", res);
         });
