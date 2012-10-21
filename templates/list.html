@@ -16,7 +16,7 @@
 </template>
 
 <template name="route">
-  <li>
+  <li data-route="{{routeTag}}" data-vehicle="{{vehicle}}">
     <div class="rightcell">
       {{#if predictionsAvailable}}
       <div class="time">{{minute1}}</div>

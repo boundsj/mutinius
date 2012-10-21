@@ -17,6 +17,25 @@ if(Meteor.isClient){
     },
     afterRender:function(){
 
+      $("ul.routelist li").on("click", function(ev){
+        var route = $(ev.currentTarget).attr("data-route");
+        var vehicle = $(ev.currentTarget).attr("data-vehicle");
+        Session.set("route", route);
+        Session.set("vehicle", vehicle);
+        Router.navigate("/map", {trigger: true});
+        
+        muniList.routeDetails(route, Session.get("stop").id);
+      });
+
+
+    },
+    routeDetails:function(route, stopid){
+      var url = "http://nextbusproxy.herokuapp.com/service/publicJSONFeed";
+        // ?command=routeConfig&a=sf-muni&r=N&stopid=5197&callback=a
+      $.ajax(url, {data:{command:"routeConfig", a:"sf-muni", r:route, stopid:stopid}, dataType:"json", success:function(data){
+        Session.set("routeDetail", data);
+        console.log(data);
+      }})
 
     },
     lookupStop:function(coords){
