@@ -41,10 +41,14 @@ if(Meteor.isClient) {
     firstRun:true,
     init:function(){
       //console.log($("#map").html()!=="")
+
+      $(".routeinfo .back").on("click", function(){
+        Router.navigate("/", {trigger: true});
+      });
+
       if($("#map").html()!=="")
         return;
 
-      
       console.log("INIT!");
       var location = new google.maps.LatLng(37.765, -122.443);
       console.log("sess loc", Session.get("location"))
@@ -113,9 +117,6 @@ if(Meteor.isClient) {
     return times.join(", ");
   };
 
-  Template.map.events({"click .routeinfo .back":function(){
-    Router.navigate("/", {trigger: true});
-  }});
 
 
   Template.map.rendered = muniMap.init;
