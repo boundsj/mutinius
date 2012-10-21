@@ -18,10 +18,7 @@ if(Meteor.isClient){
         $(".feedback").hide();
       });
       $(".feedback .feedbackbtn").on("click", function(ev){
-        //This is your feedback data, Jesse.
-        
-        // we should now have a trip ID from meteor, use that to save our feedback!
-        var tripId = "?";
+        var checkinId = Session.set("checkinId", checkinId);
         var feedbacks = $(".feedbacklist div.feedbackitem.selected");
         var fblist = [];
         _.forEach(feedbacks, function(f){
@@ -30,19 +27,25 @@ if(Meteor.isClient){
           fblist.push(c);
         });
 
-        var feedback = {tripId: tripId,
-                        feedback:fblist};
+        var userId = checkAndReturnUserLogin();
+        if (userId) {
+          var checkinId = Session.get("checkinId");
+          var feedback = {tripId: checkinId,
+                        feedback:fblist,
+                        checkinId:checkinId,
+                        userId:userId};
+          var feedbackId = Feedbacks.insert(feedback);
+          console.log("Choosen feedbacks", feedback);
 
-        console.log("Choosen feedbacks", feedback);
-
-        $(".feedback").hide();
-        $(".startfeedback").hide();
+          $(".feedback").hide();
+          $(".startfeedback").hide();
+        }
 
       });
 
 
     },
- 
+
   }
 
   Template.feedback.rendered = muniFeedback.afterRender;
