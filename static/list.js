@@ -24,7 +24,7 @@ if(Meteor.isClient){
         muniList.routeDetails(route, Session.get("stop").id);
       });
 
-
+      setSelected("list");
     },
     routeDetails:function(route, stopid){
       var url = "http://nextbusproxy.herokuapp.com/service/publicJSONFeed";
@@ -84,6 +84,11 @@ if(Meteor.isClient){
             // oops! no data from API
           }
           // XXX: this should be moved into if statement above!
+          
+          _.forEach(res, function(r){
+            r.otherminsstr = r.othermins.join(", ");
+          });
+
           res = _.sortBy(res, function(r){ return r.predictionsAvailable ? parseInt(r.minute1) : 1000 });
           Session.set("routes", res);
         });

@@ -10,21 +10,22 @@ if(Meteor.isClient) {
       Meteor.setTimeout(watchVehicle, 500);
       return;
     }
-
+    console.log("vm", vecMarker);
     if (vecMarker === null) {
+      console.log("a")
       vecMarker = new google.maps.Marker( {
         map: muniMap.map,
         position: new google.maps.LatLng(vehicle.lat, vehicle.lon),
         title: "Vehicle"
       });
     } else {
-      vecMarker.setMap(muniMap.map);
+      //vecMarker.setMap(muniMap.map);
       vecMarker.position = new google.maps.LatLng(vehicle.lat, vehicle.lon);
     }
 
     var bounds = new google.maps.LatLngBounds();
     bounds.extend(new google.maps.LatLng(vehicle.lat, vehicle.lon));
-    bounds.extend(new google.maps.LatLng(muniMap.userMarker.position.Xa, muniMap.userMarker.position.Ya));
+    bounds.extend(new google.maps.LatLng(muniMap.userMarker.position.lat(), muniMap.userMarker.position.lng()));
 
     muniMap.map.fitBounds(bounds);
     Meteor.setTimeout(watchVehicle, 5000);
@@ -38,6 +39,7 @@ if(Meteor.isClient) {
       $(".routeinfo .back").on("click", function(){
         Router.navigate("/", {trigger: true});
       });
+      setSelected("map");
 
       if($("#map").html()!=="")
         return;
@@ -68,10 +70,9 @@ if(Meteor.isClient) {
     usePosition:function(position){
       if(muniMap.map){
         var browserLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-        muniMap.map.panTo(browserLoc);
-        console.log("LOCmap", position);
+        //muniMap.map.panTo(browserLoc);
+
         muniMap.userMarker.setPosition(browserLoc);
-        muniMap.userMarker.setMap(muniMap.map)
         userMarker = muniMap.userMarker;
         console.log("userMarker=");
         console.log(userMarker);
@@ -106,7 +107,7 @@ if(Meteor.isClient) {
     _.forEach(route.minutes, function(r){
       times.push(r.value);
     });
-     console.log("R", route.minutes);
+ 
     return times.join(", ");
   };
 
