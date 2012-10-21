@@ -11,9 +11,10 @@ if(Meteor.isClient){
         $(".checkin ul li").removeClass("selected");
         $(ev.target).addClass("selected");
         Session.set("dist", $(ev.target).data("dist"));
-
-
-      })
+      });
+      $(".checkin .close").on("click", function(ev){
+        $(".checkin").hide();
+      });
     },
  
   }

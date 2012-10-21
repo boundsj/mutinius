@@ -206,6 +206,14 @@ div.busicon{
   -webkit-box-shadow: -3px 3px 8px rgba(0,0,0,0.3);
 }
 
+.checkin .close{ 
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:26px;
+  color:#fff;
+}
+
 .checkin .stops{ 
   position:absolute;
   top:120px;
