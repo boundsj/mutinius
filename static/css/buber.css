@@ -377,6 +377,98 @@ div.busicon{
 .feedback{ 
   display:none;
 }
+
+.stats .statsIcon{ 
+  background:url("/img/buber_victory.png") no-repeat;
+  width:170px;
+  height:45px;
+  margin:25px auto 10px;
+}
+.stats .statcontents{ 
+  background:#fff;
+  color:#343434;
+  position:absolute;
+  top:100px;
+  left:15px;
+  right:15px;
+  min-height:300px;
+  padding:10px;
+}
+.stats .statcontents h4{ 
+  text-transform:uppercase;
+  font-size:16px;
+  font-weight:bold;
+  text-align:center;
+}
+.stats{ 
+  bottom:-300px;
+  display:none;
+}
+.stats img{
+  margin-left:20px;
+} 
+.stats .message{ 
+  margin:40px 0px 10px;
+  text-align:center;
+}
+.stats .points{ 
+  background:#e4e4e4;
+  padding:10px;
+  border-radius:5px;
+  margin-bottom:20px;
+}
+.stats .point{
+  float:right;
+  font-weight:bold;
+} 
+.stats .pointlabel{
+  float:left;
+  width:200px;
+  margin:2px 0px;
+  font-size:14px;
+}
+.stats .pointlabel.total{
+  font-weight:bold;
+  margin:3px 0px;
+}
+.stats .feedbacklist{ 
+  position:static;
+  width:255px;
+  margin:30px auto 10px;
+  padding:0px;
+  top:0px;
+}
+.stats .feedbacklist .feedbackitem{ 
+  background-color:#fff;
+  margin:3px;
+  
+}
+.stats .feedbacklist .feedbackitem .label{
+  color:#fff;
+  font-weight:bold;
+  background:#21dcd4;
+  border-radius:0px;
+  padding:5px 5px;
+  height:15px;
+} 
+
+.stats .num{ 
+  font-size:36px;
+  color:#f37437;
+}
+.stats .leftnumber { 
+  float:left;
+  width:100px;
+  text-align:center;
+  margin-left:25px
+}
+.stats .rightnumber { 
+  float:right;
+  width:100px;
+  margin-right:25px
+  text-align:center;
+}
+
 .clear{ 
   clear:both;
 }
