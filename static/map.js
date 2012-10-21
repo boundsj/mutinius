@@ -4,12 +4,10 @@ if(Meteor.isClient) {
   var userMarker = null;
 
   function watchVehicle() {
-    console.log("watching vehicle 8-|");
     var vehicle = Vehicles.findOne();
 
     if (!vehicle || !muniMap.userMarker) {
-      Meteor.setTimeout(watchVehicle, 5000);
-      console.log("vehicle and/or userMarker are null");
+      Meteor.setTimeout(watchVehicle, 500);
       return;
     }
 
@@ -20,20 +18,15 @@ if(Meteor.isClient) {
         title: "Vehicle"
       });
     } else {
-      console.log("vechicle pos update:");
-      console.log(vehicle);
-      vecMarker.map = muniMap.map;
+      vecMarker.setMap(muniMap.map);
       vecMarker.position = new google.maps.LatLng(vehicle.lat, vehicle.lon);
     }
 
-    var bounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(vehicle.lat, vehicle.lon),
-      new google.maps.LatLng(muniMap.userMarker.position.Xa, muniMap.userMarker.position.Ya)
-    );
-    console.log(bounds);
+    var bounds = new google.maps.LatLngBounds();
+    bounds.extend(new google.maps.LatLng(vehicle.lat, vehicle.lon));
+    bounds.extend(new google.maps.LatLng(muniMap.userMarker.position.Xa, muniMap.userMarker.position.Ya));
 
     muniMap.map.fitBounds(bounds);
-    console.log("schedule watcher again");
     Meteor.setTimeout(watchVehicle, 5000);
   }
 
@@ -44,7 +37,7 @@ if(Meteor.isClient) {
       if($("#map").html()!=="")
         return;
 
-      
+
       console.log("INIT!");
       var location = new google.maps.LatLng(37.765, -122.443);
       console.log("sess loc", Session.get("location"))
