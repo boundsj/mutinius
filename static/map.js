@@ -1,13 +1,15 @@
 if(Meteor.isClient) {
 
+  var vecMarker = null;
+  var userMarker = null;
 
   Template.map.created = function() {
 
-      var vecMarker = null;
 
-      Session.set("vehicle", 5481);
+      //Session.set("vehicle", 5481);
 
       function watchVehicle() {
+        console.log(userMarker);
         var vehicle = Vehicles.findOne();
         console.log(vehicle);
 
@@ -25,6 +27,13 @@ if(Meteor.isClient) {
         } else {
           vecMarker.position = new google.maps.LatLng(vehicle.lat, vehicle.lon);
         }
+
+        var bounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng(vehicle.lat, vehicle.lon),
+          new google.maps.LatLng(userMarker.position.Xa, userMarker.position.Ya)
+        );
+        muniMap.map.fitBounds(bounds);
+
 
         Meteor.setTimeout(watchVehicle, 5000);
       }
@@ -54,6 +63,7 @@ if(Meteor.isClient) {
           muniMap.map.panTo(browserLoc);
           muniMap.userMarker.setPosition(browserLoc);
           muniMap.userMarker.setMap(muniMap.map)
+          userMarker = muniMap.userMarker;
         }, function(e){
           console.log("error", e);
         }, {enableHighAccuracy:true, maximumAge:30000, timeout:27000});
