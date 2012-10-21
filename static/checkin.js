@@ -21,6 +21,13 @@ if(Meteor.isClient){
   Template.checkin.stop = function () {
     return Session.get("stop");
   };
+
+  Template.checkin.routeDetail = function(){
+    var rd = Session.get("routeDetail");
+    console.log("in routedetail:", rd);
+    return rd;
+  };
+
   Template.checkin.rendered = muniCheckin.afterRender;
 
  /* Template.checkin.events ={

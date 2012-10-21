@@ -39,6 +39,10 @@ if(Meteor.isClient) {
       $(".routeinfo .back").on("click", function(){
         Router.navigate("/", {trigger: true});
       });
+      $(".startcheckin").on("click", function(){
+        $(".checkin").show();
+      });
+
       setSelected("map");
 
       if($("#map").html()!=="")
@@ -53,7 +57,8 @@ if(Meteor.isClient) {
       var myOptions = {
         center: location,
         zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI:true
       };
       muniMap.stops = MuniStops;
       console.log($("#map"));

@@ -8,7 +8,6 @@ if(Meteor.isClient){
     usePosition:function(position){
       var browserLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
       var stop = muniList.lookupStop([position.coords.longitude, position.coords.latitude])
-      console.log("LOClist", position);
       Session.set("stop", stop);
       Session.set("location", [position.coords.longitude, position.coords.latitude]);
     },
@@ -31,8 +30,17 @@ if(Meteor.isClient){
         // ?command=routeConfig&a=sf-muni&r=N&stopid=5197&callback=a
       $.ajax(url, {data:{command:"routeConfig", a:"sf-muni", r:route, stopid:stopid}, dataType:"json", success:function(data){
         data.route.direction1 = data.route.direction[0];
+
+        _.forEach(data.route.direction1.stop, function(stop){
+          var foundstop = _.find(muniList.stops, function(s){ 
+            return (s.id+"" == stop.tag+"");
+          });
+          stop.name = foundstop.name;
+          stop.id = foundstop.id;
+        });
+
         Session.set("routeDetail", data.route);
-        console.log(data);
+        console.log("routeDetails", data);
       }})
 
     },
@@ -75,7 +83,7 @@ if(Meteor.isClient){
       if (refreshTime === 0) {
         console.log("refreshing");
         Meteor.call('getPredictions', "1" + stop.id, function(err, res) {
-          console.log(err, res);
+
           if (res.length > 0) {
             Session.set("routes", res);
           } else {
@@ -86,7 +94,8 @@ if(Meteor.isClient){
           // XXX: this should be moved into if statement above!
           
           _.forEach(res, function(r){
-            r.otherminsstr = r.othermins.join(", ");
+            if(r.predictionsAvailable)
+              r.otherminsstr = r.othermins.join(", ");
           });
 
           res = _.sortBy(res, function(r){ return r.predictionsAvailable ? parseInt(r.minute1) : 1000 });

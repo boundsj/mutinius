@@ -177,6 +177,15 @@ div.busicon{
   font-size:14px;
 } 
 
+.startcheckin{ 
+  background:url("/img/buber_check_in_button.png");
+  width:124px;
+  height:49px;
+  position:absolute;
+  bottom:0px;
+  left:98px;
+}
+
 .checkin{ 
   background: rgba(140, 104, 163, 0.9);
   z-index: 1000;

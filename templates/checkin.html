@@ -5,14 +5,9 @@
 
     <div class="stops">
       <ul class="nextstops">
-        <li class="selected" data-dist="">
-          <div class="name">Civic Center Station</div>
-          <div class="time">4<span> mins</span></div>
-        </li>
-        <li>
-          <div class="name">Civic Center Station</div>
-          <div class="time">4<span> mins</span></div>
-        </li>
+        {{#each routeDetail.direction1.stop}}
+        {{> stop}}
+        {{/each}}
 
       </ul>
     </div>
@@ -20,4 +15,11 @@
       <div class="checkinbtn">Check in to this route</div>
     </div>
   </div>
+</template>
+
+<template name="stop">
+        <li data-dist="{{ id }}">
+          <div class="name">{{ name }}</div>
+          <!--<div class="time">4<span> mins</span></div>-->
+        </li>
 </template>
