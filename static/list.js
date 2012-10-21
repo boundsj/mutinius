@@ -4,16 +4,13 @@ if(Meteor.isClient){
 
     init:function(){
       muniList.stops = MuniStops;
-      if(navigator.geolocation) {
-        var wpid = navigator.geolocation.watchPosition(function(position) {
-          var browserLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-          var stop = muniList.lookupStop([position.coords.longitude, position.coords.latitude]);
-          console.log("stop", stop);
-          Session.set("stop", stop);
-        }, function(e){
-          console.log("error", e);
-        }, {enableHighAccuracy:true, maximumAge:30000, timeout:27000});
-      }
+    },
+    usePosition:function(position){
+      var browserLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      var stop = muniList.lookupStop([position.coords.longitude, position.coords.latitude])
+      console.log("LOClist", position);
+      Session.set("stop", stop);
+      Session.set("location", [position.coords.longitude, position.coords.latitude]);
     },
     afterRender:function(){
 
@@ -33,7 +30,8 @@ if(Meteor.isClient){
       var url = "http://nextbusproxy.herokuapp.com/service/publicJSONFeed";
         // ?command=routeConfig&a=sf-muni&r=N&stopid=5197&callback=a
       $.ajax(url, {data:{command:"routeConfig", a:"sf-muni", r:route, stopid:stopid}, dataType:"json", success:function(data){
-        Session.set("routeDetail", data);
+        data.route.direction1 = data.route.direction[0];
+        Session.set("routeDetail", data.route);
         console.log(data);
       }})
 
@@ -77,7 +75,7 @@ if(Meteor.isClient){
       if (refreshTime === 0) {
         console.log("refreshing");
         Meteor.call('getPredictions', "1" + stop.id, function(err, res) {
-          console.log(res);
+          console.log(err, res);
           if (res.length > 0) {
             Session.set("routes", res);
           } else {
