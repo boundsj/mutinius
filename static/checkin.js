@@ -10,11 +10,24 @@ if(Meteor.isClient){
       $(".checkin ul li").on("click", function(ev){
         $(".checkin ul li").removeClass("selected");
         $(ev.currentTarget).addClass("selected");
-        Session.set("dist", $(ev.target).data("dist"));
+        Session.set("dist", $(ev.currentTarget).attr("data-dist"));
       });
       $(".checkin .close").on("click", function(ev){
         $(".checkin").hide();
       });
+      $(".checkin .checkinbtn").on("click", function(ev){
+        //This is your checkin data, Jesse.
+        var checkinData = {distination: Session.get("dist"),
+                           stop: Session.get("stop").id,
+                           location:Session.get("location"),
+                           route:Session.get("route"),
+                           vehicle:Session.get("vehicle")};
+        console.log("Checkin data", checkinData);
+
+        $(".checkin").hide();
+      });
+
+
     },
  
   }
