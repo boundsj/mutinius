@@ -7,11 +7,12 @@ if (Meteor.isClient) {
       'livetest': 'livetest',
       'checkin': 'checkin',
       'map': 'map',
+      'list': 'list',
       '': 'list'
     },
     livetest: function() { this.goto('livetest'); },
-    map: function() { this.goto('map'); },
-    checkin: function() { this.goto('checkin'); },
+    map: function() { this.goto('map');  },
+    checkin: function() { this.goto('checkin');  },
     list: function() { this.goto('list'); }
   });
 
@@ -29,6 +30,19 @@ if (Meteor.isClient) {
       console.log("click");
     }
   }
+
+  var setSelected = function(page){
+    $(".header li").removeClass("selected");
+    $(".header li."+page).addClass("selected");
+  };
+
+  Template.header.rendered = function(){
+    $(".header li").on("click", function(ev){
+      Router.navigate("/"+$(ev.currentTarget).attr("class").replace("selected"), {trigger:true});
+    });
+    
+  };
+
 
 }
 

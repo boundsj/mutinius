@@ -39,6 +39,7 @@ if(Meteor.isClient) {
       $(".routeinfo .back").on("click", function(){
         Router.navigate("/", {trigger: true});
       });
+      setSelected("map");
 
       if($("#map").html()!=="")
         return;

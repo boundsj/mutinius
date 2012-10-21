@@ -23,11 +23,22 @@ div.busicon{
   width:58px;
   border-left:solid 2px #e4e4e4;
   float:right;
+  background:url("/img/buber_nav_sprite.png") no-repeat top left;
 }
 .header ul.navigation li.selected{
-  background:#f37437;
+  background:#f37437 url("/img/buber_nav_sprite.png") no-repeat;
   -webkit-box-shadow: inset 0 0 8px #666;
 } 
+.header ul.navigation li.favorite{ background-position:0px 0px; }
+.header ul.navigation li.list{ background-position: -52px 0px; }
+.header ul.navigation li.settings{ background-position: -156px 0px; }
+.header ul.navigation li.map{ background-position:-104px 0px; }
+
+.header ul.navigation li.favorite.selected{ background-position:0px -47px; }
+.header ul.navigation li.list.selected{ background-position: -52px -47px; }
+.header ul.navigation li.settings.selected{ background-position: -156px -47px; }
+.header ul.navigation li.map.selected{ background-position:-104px -47px; }
+
 
 .content{ 
   margin:8px 6px;

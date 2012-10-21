@@ -24,7 +24,7 @@ if(Meteor.isClient){
         muniList.routeDetails(route, Session.get("stop").id);
       });
 
-
+      setSelected("list");
     },
     routeDetails:function(route, stopid){
       var url = "http://nextbusproxy.herokuapp.com/service/publicJSONFeed";
