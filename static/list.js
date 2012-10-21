@@ -4,17 +4,13 @@ if(Meteor.isClient){
 
     init:function(){
       muniList.stops = MuniStops;
-      if(navigator.geolocation) {
-        var wpid = navigator.geolocation.watchPosition(function(position) {
-          var browserLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-          var stop = muniList.lookupStop([position.coords.longitude, position.coords.latitude])
-          console.log("LOC", position);
-          Session.set("stop", stop);
-          Session.set("location", [position.coords.longitude, position.coords.latitude]);
-        }, function(e){
-          console.log("error", e);
-        }, {enableHighAccuracy:true, maximumAge:30000, timeout:27000});
-      }
+    },
+    usePosition:function(position){
+      var browserLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      var stop = muniList.lookupStop([position.coords.longitude, position.coords.latitude])
+      console.log("LOClist", position);
+      Session.set("stop", stop);
+      Session.set("location", [position.coords.longitude, position.coords.latitude]);
     },
     afterRender:function(){
 

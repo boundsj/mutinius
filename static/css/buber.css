@@ -164,6 +164,7 @@ div.busicon{
   z-index: 1000;
   position:absolute;
   top:0px; bottom:0px; right:0px; left:0px;
+  display:none;
   color:#fff;
 }
 .checkin h3{ 
