@@ -20,6 +20,9 @@ if(Meteor.isClient) {
         title: "Vehicle"
       });
     } else {
+      console.log("vechicle pos update:");
+      console.log(vehicle);
+      vecMarker.map = muniMap.map;
       vecMarker.position = new google.maps.LatLng(vehicle.lat, vehicle.lon);
     }
 
