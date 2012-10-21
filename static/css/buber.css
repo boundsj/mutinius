@@ -328,7 +328,7 @@ div.busicon{
 
 }
 .feedbacklist .feedbackitem{ 
-  color:#21dcd4;
+  color:#eee;
   height:78px;
   width:78px;
   position:relative;
@@ -336,7 +336,14 @@ div.busicon{
   margin:5px;
   background: #21dcd4 url("/img/buber_feedback_icons.png") no-repeat top left;
   float:left;
+  cursor:pointer;
 }
+
+.feedbacklist .feedbackitem:hover{ 
+  color:#21dcd4;
+}
+
+
 
 .feedbacklist .feedbackitem.zippy{ background-position: 0px 0px}
 .feedbacklist .feedbackitem.slow{ background-position:  -84px 0px}

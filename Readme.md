@@ -1,6 +1,6 @@
 # Mutini
 
-Mutini was built for the [Reroute/SF Hackathon](http://hattery.com/reroute/) Oct 19-21, 2012.
+Mutini was built at the [Reroute/SF Hackathon](http://hattery.com/reroute/) Oct 19-21, 2012.
 
 ## How to use
 
