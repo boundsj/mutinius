@@ -15,7 +15,8 @@ div.busicon{
   height:48px;
   width:48px;
   float:left;
-  background:url('/img/bus_icon.png');
+  margin: 8px 0px 0px 7px;
+  background:url('/img/bus_icon.png') no-repeat;
 }
 
 .header ul.navigation li{ 
