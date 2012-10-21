@@ -1,9 +1,12 @@
+Checkins = new Meteor.Collection("checkins");
+Feedbacks = new Meteor.Collection("feedbacks");
 Vehicles = new Meteor.Collection("vehicles");
 
 if (Meteor.isClient) {
 
   BuberRouter = ReactiveRouter.extend({
     routes: {
+      'settings': 'list',
       'livetest': 'livetest',
       'checkin': 'checkin',
       'map': 'map',
@@ -24,6 +27,12 @@ if (Meteor.isClient) {
   Meteor.autosubscribe(function() {
     Meteor.subscribe("vehicles", Session.get("vehicle"));
   });
+  Meteor.autosubscribe(function() {
+    Meteor.subscribe("checkins", Meteor.userId());
+  });
+  Meteor.autosubscribe(function() {
+    Meteor.subscribe("feedbacks", Meteor.userId());
+  });
 
   Template.checkin.events = {
     'click': function() {
@@ -40,8 +49,19 @@ if (Meteor.isClient) {
     $(".header li").on("click", function(ev){
       Router.navigate("/"+$(ev.currentTarget).attr("class").replace("selected"), {trigger:true});
     });
-
   };
+
+  var checkAndReturnUserLogin = function() {
+    console.log("user", Meteor.user());
+    if (!Meteor.user()) {
+      // XXX: For demo only!! disabling the login req because meteor login sucks
+      //      ass on mobile.
+      //alert('Hey good looking, you need to login to do this!');
+      //return null;
+      return "DEMO_USER";
+    }
+    return Meteor.userId();
+  }
 
   var loginButtonsSession = Accounts._loginButtonsSession;
   var correctDropdownZIndexes = function () {
@@ -71,9 +91,6 @@ if (Meteor.isClient) {
       Meteor.flush();
       correctDropdownZIndexes();
     }
-    //'click .login-close-text': function () {
-    //  loginButtonsSession.closeDropdown();
-    //}
   });
 
 }
@@ -90,8 +107,6 @@ if (Meteor.isServer) {
         Meteor.setTimeout(pollVehicleLocations, 10000);
         return;
       }
-
-      //Vehicles.remove({});
 
       console.log("loading vehicles");
       for (var i=0; i<vehiclesList.length; i++) {
@@ -110,6 +125,12 @@ if (Meteor.isServer) {
     Meteor.publish("vehicles", function(id) {
       console.log("subscription request for vehicle: " + id);
       return Vehicles.find({id: id});
+    });
+    Meteor.publish("checkins", function(id) {
+      return Checkins.find({userId: id});
+    });
+    Meteor.publish("feedbacks", function(id) {
+      return Feedbacks.find({userId: id});
     });
 
     Meteor.methods({

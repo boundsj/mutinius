@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 body{ 
   background:#e3e3e3;
-  font-family:arial;
+  font-family: 'Asap', 'Helvetica', sans-serif;
   color:#4f4f4f;
 }
 
@@ -15,6 +15,7 @@ div.busicon{
   height:48px;
   width:48px;
   float:left;
+  margin: 8px 0px 0px 7px;
   background:url('/img/bus_icon.png') no-repeat;
 }
 
@@ -27,7 +28,7 @@ div.busicon{
 }
 .header ul.navigation li.selected{
   background:#f37437 url("/img/buber_nav_sprite.png") no-repeat;
-  -webkit-box-shadow: inset 0 0 8px #666;
+  -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
 } 
 .header ul.navigation li.favorite{ background-position:0px 0px; }
 .header ul.navigation li.list{ background-position: -52px 0px; }
@@ -63,9 +64,9 @@ div.busicon{
 
 .routeinfo .tag{ 
   text-align:center;
+  font-family: 'Bowlby One SC', sans-serif;
   font-size:42px;
   font-weight:bold;
-  color:
 }
 .routeinfo .direction{
   text-align:center;
@@ -74,7 +75,7 @@ div.busicon{
 } 
 .routeinfo .stop{ 
   text-align:center;
-  margin-bottom:9px;
+  margin-bottom:7px;
 }
 .routeinfo .description{ 
   text-align:center;
@@ -84,14 +85,14 @@ div.busicon{
 .routeinfo .upcomingtimes{ 
   text-align:center;
   background:#49c9c3;
-  padding:5px;
+  padding:7px;
   border-radius:3px;
   color:#fff;
   margin:10px 0px 5px;
-  -webkit-box-shadow: inset 0 0 8px #666;
+  -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
 }
 .routeinfo .upcomingtimes span{ 
-  font-size:36px;
+  font-size:30px;
 }
 .mapbox{ 
   border:solid 2px #c9c9c9;
@@ -100,7 +101,7 @@ div.busicon{
   left:8px;
   right:8px;
   padding:5px;
-  top:175px;  
+  top:155px;  
 }
 
 #map{ 
@@ -112,9 +113,9 @@ div.busicon{
 }
 
 .stoplocation{ 
-  font-size:32px;
+  font-size:25px;
   text-align:center;
-  margin:5px 0px;
+  margin:5px 0px 10px;
 }
 
 .routelist li{ 
@@ -155,7 +156,6 @@ div.busicon{
 .routelist li .rightcell{ 
   float:right;
   width:90px;
-
 }
 .routelist li .time{ 
   float:left;
@@ -202,6 +202,7 @@ div.busicon{
   top:0px; bottom:0px; right:0px; left:0px;
   color:#fff;
 }
+
 .checkin{ 
   background: rgba(140, 104, 163, 0.9);
   display:none;
@@ -209,6 +210,7 @@ div.busicon{
 
 
 .modal h3{ 
+  font-weight: bold;
   font-size:18px;
   text-align:center;
   background:#444444;
@@ -224,7 +226,7 @@ div.busicon{
   position:absolute;
   top:10px;
   right:15px;
-  font-size:26px;
+  font-size:22px;
   color:#fff;
 }
 
@@ -326,7 +328,7 @@ div.busicon{
 
 }
 .feedbacklist .feedbackitem{ 
-  color:#21dcd4;
+  color:#eee;
   height:78px;
   width:78px;
   position:relative;
@@ -334,7 +336,14 @@ div.busicon{
   margin:5px;
   background: #21dcd4 url("/img/buber_feedback_icons.png") no-repeat top left;
   float:left;
+  cursor:pointer;
 }
+
+.feedbacklist .feedbackitem:hover{ 
+  color:#21dcd4;
+}
+
+
 
 .feedbacklist .feedbackitem.zippy{ background-position: 0px 0px}
 .feedbacklist .feedbackitem.slow{ background-position:  -84px 0px}
