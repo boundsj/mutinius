@@ -48,7 +48,6 @@ if(Meteor.isClient){
     var refresh = function() {
 
       var stop = Session.get("stop");
-
       if (!stop || !stop.id) {
         console.log("no stop, retry");
         Meteor.setTimeout(refresh, 500);
@@ -59,8 +58,7 @@ if(Meteor.isClient){
       if (refreshTime === 0) {
         console.log("refreshing");
         Meteor.call('getPredictions', "1" + stop.id, function(err, res) {
-          console.log(res);
-          res = _.sortBy(res, function(r){ r.predictionsAvailable ? r.minute1 : 1000 });
+          res = _.sortBy(res, function(r){ return r.predictionsAvailable ? parseInt(r.minute1) : 1000 });
           Session.set("routes", res);
         });
         refreshTime = 30;
