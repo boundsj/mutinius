@@ -16,7 +16,8 @@ if(Meteor.isClient) {
       vecMarker = new google.maps.Marker( {
         map: muniMap.map,
         position: new google.maps.LatLng(vehicle.lat, vehicle.lon),
-        title: "Vehicle"
+        title: "Vehicle",
+        icon:muniMap.busMarkerImage
       });
     } else {
       // without this, marker does not get re-drawn on map
@@ -31,11 +32,24 @@ if(Meteor.isClient) {
     muniMap.map.fitBounds(bounds);
     Meteor.setTimeout(watchVehicle, 5000);
   }
-
   var muniMap = {
     firstRun:true,
     init:function(){
       //console.log($("#map").html()!=="")
+      var size = new google.maps.Size(25.0, 30.0);
+      var busorigin = new google.maps.Point(0, 0);
+      var personorigin = new google.maps.Point(0, 0);
+      var anchor = new google.maps.Point(12.5, 20.0);
+      muniMap.busMarkerImage = new google.maps.MarkerImage('/img/buber_map_sprite.png',
+                                                           size,
+                                                           new google.maps.Point(0, 0),
+                                                           anchor
+                                                          );
+      muniMap.personMarkerImage = new google.maps.MarkerImage('/img/buber_map_sprite.png',
+                                                              size,
+                                                              new google.maps.Point(25, 0),
+                                                              anchor
+                                                             );
 
       $(".routeinfo .back").on("click", function(){
         Router.navigate("/", {trigger: true});
@@ -79,7 +93,8 @@ if(Meteor.isClient) {
       muniMap.userMarker = new google.maps.Marker({
         position: location,
         title: "You",
-        map:muniMap.map
+        map:muniMap.map,
+        icon:muniMap.personMarkerImage
       });
 
       muniMap.firstRun = false;
