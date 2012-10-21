@@ -68,7 +68,9 @@ if(Meteor.isClient) {
         $(".checkin").css("background", "rgba("+[r,g,b].join(",")+", 0.9)");
         $(".checkin").show();
       });
-
+      $(".startfeedback").on("click", function(){
+        $(".feedback").show();
+      });
       setSelected("map");
 
       if($("#map").html()!=="")

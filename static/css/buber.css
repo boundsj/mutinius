@@ -185,16 +185,30 @@ div.busicon{
   bottom:0px;
   left:98px;
 }
+.startfeedback{ 
+  background:url("/img/buber_treasures_button.png");
+  width:124px;
+  height:49px;
+  position:absolute;
+  bottom:0px;
+  left:98px;
+  display:none;
+}
 
-.checkin{ 
-  background: rgba(140, 104, 163, 0.9);
+.modal{ 
+  background: rgba(0, 0, 0, 0.85);
   z-index: 1000;
   position:absolute;
   top:0px; bottom:0px; right:0px; left:0px;
-  display:none;
   color:#fff;
 }
-.checkin h3{ 
+.checkin{ 
+  background: rgba(140, 104, 163, 0.9);
+  display:none;
+}
+
+
+.modal h3{ 
   font-size:18px;
   text-align:center;
   background:#444444;
@@ -206,7 +220,7 @@ div.busicon{
   -webkit-box-shadow: -3px 3px 8px rgba(0,0,0,0.3);
 }
 
-.checkin .close{ 
+.modal .close{ 
   position:absolute;
   top:10px;
   right:15px;
@@ -256,7 +270,14 @@ div.busicon{
   margin:10px auto 5px;
 
 }
-.checkinbtn{ 
+.checkin .checkinIcon{ 
+  background:url("/img/buber_check_in_text.png") no-repeat;
+  width:138px;
+  height:66px;
+  margin:10px auto 5px;
+
+}
+.modalcontrols .btn{ 
   text-transform:uppercase;
   padding:12px 9px;
   font-size:14px;
@@ -269,16 +290,86 @@ div.busicon{
   -webkit-box-shadow:  -3px 3px 8px rgba(0,0,0,0.3);
   border-radius:5px;
 }
-.checkincontrols{ 
+.checkinbtn{ 
+  background:#f37437;
+}
+
+
+.modalcontrols{ 
   position:absolute;
   bottom:30px;
   left:0px;
   right:0px;
 }
 
-.stops{ 
+.feedbacklist{ 
+  position:absolute;
+  top:120px;
   
+  left:15px;
+  right:15px;
+  background:#fff;
+  overflow:auto;
+  color:#4f4f4f;
+  padding:5px 12px 10px;
+}
+.feedbacklist .subheading{
+  text-align:center;
+  margin:5px 0px;
+} 
 
+.feedback .feedbackIcon{ 
+  background:url("/img/buber_ahoy.png") no-repeat;
+  width:113px;
+  height:45px;
+  margin:25px auto 10px;
+
+}
+.feedbacklist .feedbackitem{ 
+  color:#21dcd4;
+  height:78px;
+  width:78px;
+  position:relative;
+  border-radius:5px;
+  margin:5px;
+  background: #21dcd4 url("/img/buber_feedback_icons.png") no-repeat top left;
+  float:left;
+}
+
+.feedbacklist .feedbackitem.zippy{ background-position: 0px 0px}
+.feedbacklist .feedbackitem.slow{ background-position:  -84px 0px}
+.feedbacklist .feedbackitem.packed{ background-position: -171px 0px}
+.feedbacklist .feedbackitem.stinky{ background-position: -257px 0px}
+.feedbacklist .feedbackitem.kindness{ background-position: -336px 0px}
+.feedbacklist .feedbackitem.rad{ background-position: -423px 0px}
+.feedbacklist .feedbackitem.friend{ background-position: -509px 0px}
+.feedbacklist .feedbackitem.grumpy{ background-position: -593px 0px}
+.feedbacklist .feedbackitem.cool{ background-position: -676px 0px}
+
+.feedbacklist .feedbackitem .label{
+  position:absolute;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  height:15px;
+  padding:8px 0px;
+  font-weight:bold;
+  text-align:center;
+  background:#343434;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  font-size:10px;
+  text-transform:uppercase;
+} 
+.feedbacklist .feedbackitem.selected{
+  color:#fff;
+  background-color:#f37437;
+} 
+.feedback{ 
+  display:none;
+}
+.clear{ 
+  clear:both;
 }
 
 .accounts-dialog {

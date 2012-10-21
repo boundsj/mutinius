@@ -21,6 +21,7 @@ if(Meteor.isClient){
         Router.navigate("/map", {trigger: true});
 
         muniList.routeDetails(route, Session.get("stop").id);
+        $(".startcheckin").show();
       });
 
       setSelected("list");

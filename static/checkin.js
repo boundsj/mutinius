@@ -25,6 +25,8 @@ if(Meteor.isClient){
         console.log("Checkin data", checkinData);
 
         $(".checkin").hide();
+        $(".startcheckin").hide();
+        $(".startfeedback").show();
       });
 
 
