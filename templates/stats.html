@@ -1,13 +1,50 @@
 <template name="stats">
-  <div class="stats">
+  <div class="stats modal">
     <div class="close"> X </div>
     <div class="statsIcon"></div>
-    <h3>Where are you headed?</h3>
+    
+    <div class="statcontents">
 
+      <h4>Top 3 things about this bus:</h4>
+      
+      <div class="feedbacklist">
+        <div class="feedbackitem zippy">
+          <div class="label">Zippy</div>
+        </div>
+        <div class="feedbackitem slow">
+          <div class="label">Slow</div>
+        </div>
+        <div class="feedbackitem packed">
+          <div class="label">Packed Like Sardines</div>
+        </div>
+      </div>
 
-    <div class="modalcontrols">
-      <div class="dismissbtn">Awesome Thanks!</div>
+      <div class="message">You sailed {{miles}} miles of the city! Woot!</div>
+      <div class="points">
+        <div class="point">+8</div>
+        <div class="pointlabel total">You earned:</div>
+        <div class="clear"></div>
+        <div class="point">+3</div>
+        <div class="pointlabel">First time on this route</div>
+        <div class="clear"></div>
+        <div class="point">+5</div>
+        <div class="pointlabel">You've riden 3 different route</div>
+        <div class="clear"></div>
+      </div>
+      <h4>your total stats</h4>
+      <div class="leftnumber">
+        <div class="num">123</div>
+        <span>Miles travled</span>
+      </div>
+      <div class="rightnumber">
+        <div class="num">45</div>
+        <span>points earned</span>
+      </div>
+      <div class="clear"></div>
+      <img src="/img/fake.png" />
     </div>
+    
   </div>
+
 </template>
 

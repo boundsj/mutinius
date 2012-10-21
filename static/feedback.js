@@ -37,7 +37,7 @@ if(Meteor.isClient){
 
         $(".feedback").hide();
         $(".startfeedback").hide();
-
+        $(".stats").show();
       });
 
 
