@@ -15,7 +15,7 @@ div.busicon{
   height:48px;
   width:48px;
   float:left;
-
+  margin: 2px;
   background:url('/img/bus_icon.png') no-repeat;
 }
 
