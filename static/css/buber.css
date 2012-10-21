@@ -408,14 +408,14 @@ div.busicon{
   margin-left:20px;
 } 
 .stats .message{ 
-  margin:40px 0px 10px;
+  margin:20px 0px 10px;
   text-align:center;
 }
 .stats .points{ 
   background:#e4e4e4;
   padding:10px;
   border-radius:5px;
-  margin-bottom:20px;
+  margin-bottom:25px;
 }
 .stats .point{
   float:right;
@@ -434,7 +434,7 @@ div.busicon{
 .stats .feedbacklist{ 
   position:static;
   width:255px;
-  margin:30px auto 10px;
+  margin: 8px auto 10px;
   padding:0px;
   top:0px;
 }
