@@ -7,7 +7,13 @@ if(Meteor.isClient){
     },
     afterRender:function(){
 
+      $(".checkin ul li").on("click", function(ev){
+        $(".checkin ul li").removeClass("selected");
+        $(ev.target).addClass("selected");
+        Session.set("dist", $(ev.target).data("dist"));
 
+
+      })
     },
  
   }
@@ -17,8 +23,11 @@ if(Meteor.isClient){
   };
   Template.checkin.rendered = muniCheckin.afterRender;
 
-  Template.checkin.events = {
-    'click input': function() {
+ /* Template.checkin.events ={
+    'click  li': function(ev) {
+      $(".checkin ul li").removeClass("selected");
+      $(ev.target).addClass("selected");
+      Session.set("dist", $(ev.target).data("dist"));
       Meteor.call('getPredictions', 5542, [14], function(err, res) {
           console.log(res);
           for (var i=0; i<res[0].data.predictions.direction.prediction.length; i++) {
@@ -26,7 +35,7 @@ if(Meteor.isClient){
           }
       });
     }
-  };
+  };*/
 
   $(muniCheckin.init);
 

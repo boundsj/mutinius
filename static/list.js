@@ -67,6 +67,8 @@ if(Meteor.isClient){
             console.log("no data returned from API for route predictions!");
             // oops! no data from API
           }
+          res = _.sortBy(res, function(r){ r.predictionsAvailable ? r.minute1 : 1000 });
+          Session.set("routes", res);
         });
         refreshTime = 30;
         Session.set("refreshTime", refreshTime);

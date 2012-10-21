@@ -16,16 +16,21 @@
 </template>
 
 <template name="route">
-      <li>
-      <div class="rightcell">
-        <div class="time">{{minute1}}</div>
-        <div class="othertimes">{{minute2}}, {{minute3}}</div>
-        <div class="timelabel">mins.</div>
-      </div>
-      <div class="leftcell">
-        <div class="tag">{{routeTag}}</div>
-        <div class="direction">{{title}}</div>
-        <div class="stop">{{stopTitle}}</div>
-      </div>
-    </li>
+  <li>
+    <div class="rightcell">
+      {{#if predictionsAvailable}}
+      <div class="time">{{minute1}}</div>
+      <div class="othertimes">{{minute2}}, {{minute3}}</div>
+      <div class="timelabel">mins.</div>
+      {{else}}
+      <div class="time small">NONE</div>
+      {{/if}}
+    </div>
+
+    </div>
+    <div class="leftcell">
+      <div class="tag">{{routeTag}}</div>
+      <div class="direction">{{title}}</div>
+      <div class="stop">{{stopTitle}}</div>
+  </li>
 </template>

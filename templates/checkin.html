@@ -1,7 +1,23 @@
 <template name="checkin">
-  <h3>check bus times</h3>
-  <input type="button" value="Click" /> 
-  <h4>results:</h4>
-  <span id="predictions"></span>
-  <div>abcdefg</div>
+  <div class="checkin">
+    <div class="checkinIcon"></div>
+    <h3>Where are you headed?</h3>
+
+    <div class="stops">
+      <ul class="nextstops">
+        <li class="selected" data-dist="">
+          <div class="name">Civic Center Station</div>
+          <div class="time">4<span> mins</span></div>
+        </li>
+        <li>
+          <div class="name">Civic Center Station</div>
+          <div class="time">4<span> mins</span></div>
+        </li>
+
+      </ul>
+    </div>
+    <div class="checkincontrols">
+      <div class="checkinbtn">Check in to this route</div>
+    </div>
+  </div>
 </template>
