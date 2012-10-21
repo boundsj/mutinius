@@ -57,7 +57,11 @@ var NextBusApi = {
       //      :P
       var predictionArray;
       if (raw.direction.length) {
-        predictionArray = raw.direction[0].prediction;
+        if(raw.direction[0].prediction.length){
+          predictionArray = raw.direction[0].prediction;
+        }else{
+          predictionArray = [raw.direction[0].prediction];
+        }
         prediction.title = raw.direction[0].title.substring(0, 8);
       } else {
         predictionArray = raw.direction.prediction;
@@ -68,6 +72,7 @@ var NextBusApi = {
       for (var j=0; j<maxPredictions; j++) {
         minutes.push({value: predictionArray[j].minutes});
       }
+      //console.log("pa",predictionArray)
       prediction.minutes = minutes;
       prediction.vehicle = predictionArray[0].vehicle;
       if (minutes.length >= 1) {prediction.minute1 = minutes[0].value;}
