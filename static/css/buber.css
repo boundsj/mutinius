@@ -399,13 +399,15 @@ div.busicon{
   font-size:16px;
   font-weight:bold;
   text-align:center;
+  margin-bottom: 10px;
 }
 .stats{ 
   bottom:-300px;
   display:none;
 }
 .stats img{
-  margin-left:20px;
+  margin: 20px 0px 0px 15px;
+  /*margin-left:20px;*/
 } 
 .stats .message{ 
   margin:20px 0px 10px;
@@ -458,14 +460,14 @@ div.busicon{
 }
 .stats .leftnumber { 
   float:left;
-  width:100px;
+  width:110px;
   text-align:center;
-  margin-left:25px
+  margin-left:20px;
 }
 .stats .rightnumber { 
   float:right;
-  width:100px;
-  margin-right:25px
+  width:110px;
+  margin-right:20px;
   text-align:center;
 }
 
