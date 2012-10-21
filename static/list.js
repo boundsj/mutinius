@@ -35,8 +35,13 @@ if(Meteor.isClient){
           var foundstop = _.find(muniList.stops, function(s){
             return (s.id+"" == stop.tag+"");
           });
-          stop.name = foundstop.name;
-          stop.id = foundstop.id;
+          if(foundstop){
+            stop.name = foundstop.name;
+            stop.id = foundstop.id;
+          }else{
+            stop.name = "stop: "+ stop.tag;
+            stop.id = stop.tag;
+          }
         });
 
         Session.set("routeDetail", data.route);
