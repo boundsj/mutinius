@@ -9,7 +9,7 @@ if(Meteor.isClient){
 
       $(".checkin ul li").on("click", function(ev){
         $(".checkin ul li").removeClass("selected");
-        $(ev.target).addClass("selected");
+        $(ev.currentTarget).addClass("selected");
         Session.set("dist", $(ev.target).data("dist"));
       });
       $(".checkin .close").on("click", function(ev){
