@@ -13,8 +13,13 @@ if(Meteor.isClient){
     usePosition:function(position){
       var browserLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
       var stop = muniList.lookupStop([position.coords.longitude, position.coords.latitude])
-      Session.set("stop", stop);
-      Session.set("location", [position.coords.longitude, position.coords.latitude]);
+
+      if(stop === null){
+        Session.set("notnearby", true);
+      }else{ 
+        Session.set("stop", stop);
+      }
+        Session.set("location", [position.coords.longitude, position.coords.latitude]);
     },
     afterRender:function(){
 
@@ -78,7 +83,7 @@ if(Meteor.isClient){
       var current = new google.maps.LatLng(coords[1], coords[0]);
       var inbounds = [];
 
-      var smallest = 10000;
+      var smallest = 10000000;
       var closest;
       for(s in muniList.stops){
         var stop = muniList.stops[s];
@@ -90,6 +95,7 @@ if(Meteor.isClient){
           closest = stop;
         }
       }
+
       return closest;
     }
 
@@ -149,6 +155,10 @@ if(Meteor.isClient){
   Template.list.stop = function () {
     return Session.get("stop");
   };
+  Template.list.notnearby = function () {
+    return Session.get("notnearby");
+  };
+
   Template.list.rendered = muniList.afterRender;
   $(muniList.init);
 
