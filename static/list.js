@@ -1,11 +1,6 @@
 if(Meteor.isClient){
 
-  
-  
-  
-
-  
-  var muniList = {
+  muniList = {
 
     init:function(){
       muniList.stops = MuniStops;
@@ -16,7 +11,7 @@ if(Meteor.isClient){
 
       if(stop === null){
         Session.set("notnearby", true);
-      }else{ 
+      }else{
         Session.set("stop", stop);
       }
         Session.set("location", [position.coords.longitude, position.coords.latitude]);
@@ -37,20 +32,20 @@ if(Meteor.isClient){
       if(Session.get("shownPopup") === undefined){
 
         if(!window.navigator.standalone){
-          
+
           Session.set("shownPopup", true);
           $(".addtohomepage").show();
           Meteor.setTimeout(function(){
             $(".addtohomepage").hide();
           }, 7000);
-          
+
         }
       }
       $(".addtohomepage").on("click", function(){
         $(".addtohomepage").hide();
       });
 
-   
+
 
       setSelected("list");
     },

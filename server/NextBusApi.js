@@ -1,6 +1,6 @@
 var baseUrl = 'http://webservices.nextbus.com';
 
-var NextBusApi = {
+NextBusApi = {
 
   callVehicleLocationServer: function() {
     var url = baseUrl + '/service/publicJSONFeed?command=vehicleLocations&a=sf-muni';

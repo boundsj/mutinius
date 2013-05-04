@@ -3,8 +3,7 @@ Feedbacks = new Meteor.Collection("feedbacks");
 Vehicles = new Meteor.Collection("vehicles");
 
 if (Meteor.isClient) {
-
-  BuberRouter = ReactiveRouter.extend({
+  BuberRouter = Backbone.Router.extend({
     routes: {
       'settings': 'list',
       'livetest': 'livetest',
@@ -13,13 +12,21 @@ if (Meteor.isClient) {
       'list': 'list',
       '': 'list'
     },
-    livetest: function() { this.goto('livetest'); },
-    map: function() { this.goto('map');  },
-    checkin: function() { this.goto('checkin');  },
-    list: function() { this.goto('list'); }
+    livetest: function() {
+        console.log('==========> livetest');
+        document.body.appendChild(Meteor.render(Template.livetest));
+    },
+    list: function() {
+        console.log('==========> list');
+        $('.content').html(Meteor.render(Template.list));
+    },
+    map: function() {
+        console.log('==========> map');
+        $('.content').html(Meteor.render(Template.map));
+    }
   });
-
   Router = new BuberRouter();
+
   Meteor.startup(function() {
     Backbone.history.start({pushState: true});
   });
@@ -40,7 +47,7 @@ if (Meteor.isClient) {
     }
   }
 
-  var setSelected = function(page){
+  setSelected = function(page){
     $(".header li").removeClass("selected");
     $(".header li."+page).addClass("selected");
   };
